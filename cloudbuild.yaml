@@ -1,0 +1,26 @@
+steps:
+
+- name: python:3.11
+  entrypoint: bash
+  args:
+    - -c
+    - |
+      pip install -r requirements.txt
+      python pipelines/feature_pipeline.py
+
+- name: gcr.io/cloud-builders/gsutil
+  args:
+    - cp
+    - pipeline_spec.json
+    - gs://vertex-demo/templates/
+
+- name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  entrypoint: bash
+  args:
+    - -c
+    - |
+      gcloud ai pipelines run \
+      --region=us-central1 \
+      --file=gs://vertex-demo/templates/pipeline_spec.json \
+      --parameter-values=input_path=gs://vertex-demo/raw/events.parquet \
+      --parameter-values=bq_table=demo_features.publisher_features

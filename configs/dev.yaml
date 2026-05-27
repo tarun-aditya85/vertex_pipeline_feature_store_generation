@@ -1,0 +1,9 @@
+project_id: demo-project
+
+region: us-central1
+
+pipeline_root: gs://vertex-demo/pipeline-root
+
+input_path: gs://vertex-demo/raw/events.parquet
+
+bq_table: demo_features.publisher_features

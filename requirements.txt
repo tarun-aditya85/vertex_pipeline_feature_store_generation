@@ -1,0 +1,29 @@
+# Vertex Pipelines
+kfp>=2.10.0
+
+# Vertex SDK
+google-cloud-aiplatform>=1.70.0
+
+# Dataproc
+google-cloud-dataproc>=5.15.0
+
+# Storage
+google-cloud-storage>=2.18.0
+
+# BigQuery
+google-cloud-bigquery>=3.30.0
+
+# Data
+pandas>=2.2.3
+pyarrow>=18.1.0
+numpy>=2.2.0
+
+# Spark local testing
+pyspark>=3.5.3
+
+# Testing
+pytest>=8.3.4
+pytest-mock>=3.14.0
+
+# Config
+PyYAML>=6.0.2

@@ -1,0 +1,24 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+
+      - run: |
+          pip install -r requirements.txt
+
+      - run: |
+          python pipelines/feature_pipeline.py
